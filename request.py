@@ -1,4 +1,4 @@
-mport requests
+import requests
 import time
 import random
 import pandas as pd
