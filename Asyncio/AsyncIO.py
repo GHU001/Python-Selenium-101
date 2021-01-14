@@ -126,5 +126,6 @@ async & await key words
 #     #     result = loop.run_in_executor(pool,func)
 
 
-3.6 asyncio + 不支持异步的模块
-e.g 爬虫
+# 3.6 asyncio + 不支持异步的模块
+# e.g 爬虫
+
