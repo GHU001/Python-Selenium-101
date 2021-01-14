@@ -2,3 +2,49 @@
 #装饰器本质，闭包
 
 
+import time
+
+def timer1(f):
+    #f = test  f is the real test
+    def inner():
+        start_time = time.time()
+        f()
+        end_time = time.time()
+        print("Execution time:", end_time - start_time)
+
+    return inner
+
+#timer1 no return
+# Have return value
+def timer2(f):
+    def inner():
+        start_time = time.time()
+        result = f()
+        end_time = time.time()
+        print("Execution time:", end_time - start_time)
+        return result
+    return inner
+
+# have args
+def timer3(f):
+    def inner(*args, **kwargs):
+        start_time = time.time()
+        result = f(*args, **kwargs)
+        end_time = time.time()
+        print("Execution time:", end_time - start_time)
+        return result
+    return inner
+
+
+@timer1
+def test():  # test == inner
+    time.sleep(1)
+    return
+
+@timer3
+def test1(*args, **kwargs): #call test is equivalent to call inner
+    print("This is args:", *args)
+    time.sleep(1)
+    return
+
+test1("this is good", "how is this")
